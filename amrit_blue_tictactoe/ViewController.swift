@@ -29,7 +29,11 @@ class ViewController: UIViewController {
     
     @objc func imageTapped(tapGestureRecognizer: UITapGestureRecognizer) {
         let tappedImage = tapGestureRecognizer.view as! UIImageView
-        var index = imageCollection.firstIndex(of: tappedImage)!
+        let index = imageCollection.firstIndex(of: tappedImage)!
+        
+        game.checkForWinner()
+        
+        
         
 //        ONLY CARRY ON IF THE TAPPED IMAGE IS AN EMPTY ONE
         if (game.sprites[index] == nil) {
@@ -42,6 +46,8 @@ class ViewController: UIViewController {
             
             //        SWITCH TURNS
             currentPlayer = switchTurns(currentPlayer: currentPlayer)
+            showCurrentPlayerTurnMessage(message: nil, font: nil)
+
         }
        
     }
@@ -50,14 +56,25 @@ class ViewController: UIViewController {
         return currentPlayer == TicTacToe.cross ? TicTacToe.zero : TicTacToe.cross
     }
     
+    func showCurrentPlayerTurnMessage(message : String?, font: UIFont?) {
+        
+        let message = "Player \(currentPlayer == TicTacToe.cross ? "1" : "2")'s (\(currentPlayer)) turn";
+        
+        let toastLabel = UILabel(frame: CGRect(x: self.view.frame.size.width/2 - 75, y: self.view.frame.size.height-100, width: 150, height: 35))
+        toastLabel.backgroundColor = UIColor.black
+        toastLabel.textColor = UIColor.white
+        toastLabel.font = UIFont(name: "IranSansMobile", size: 19)
+        toastLabel.textAlignment = .center;
+        toastLabel.text = message
+        toastLabel.alpha = 1.0
+        toastLabel.layer.cornerRadius = 10;
+        toastLabel.clipsToBounds  =  true
+        toastLabel.adjustsFontSizeToFitWidth = true
+        self.view.addSubview(toastLabel)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-//        for part in collection! {
-//            // addPanGesture(view: part)
-//            print("COLORS - " , part.backgroundColor!)
-//        }
-        
         for part in imageCollection! {
             addImageTapGesture(imageView: part)
             part.image = UIImage(named: TicTacToe.transparent)

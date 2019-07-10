@@ -21,5 +21,9 @@ class TicTacToe {
         sprites[index] = turn;
     }
     
-    
+    func checkForWinner() {
+        if (sprites[0] != nil && (sprites[0] ) == (sprites[1]) && sprites[1] == sprites[2]) {
+            print("Equal")
+        }
+    }
 }

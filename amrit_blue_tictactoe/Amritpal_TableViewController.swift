@@ -29,21 +29,40 @@ class Amritpal_TableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 5
+        let numberOfGamesPlayed = UserDefaults.standard.integer(forKey: "numberOfGamesPlayed")
+        print(numberOfGamesPlayed)
+        return numberOfGamesPlayed
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "amrit_table_cell", for: indexPath) as! Amritpal_TableViewCell
-
-         // Configure the cell...
-        
         let array = ["Frodo", "Sam", "Wise", "Gamgee"]
         print(array.randomElement()!) // Using ! knowing I have array.count > 0
         
-        cell.who_won.text = array.randomElement()!
-        cell.date_played.text = "Today"
-        cell.win_loss_image.image = UIImage(named: "Blue_Loss")
-
+        let numberOfGamesPlayed = UserDefaults.standard.integer(forKey: "numberOfGamesPlayed")
+        let thisCellGameIndex = numberOfGamesPlayed - indexPath.row
+        
+        let whoWon = UserDefaults.standard.string(forKey: "Result_\(String(thisCellGameIndex))")
+        
+        let whenWon = UserDefaults.standard.object(forKey: "Timestamp_\(String(thisCellGameIndex))") as! Date
+        
+        print(whoWon,whenWon)
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .medium
+        dateFormatter.timeStyle = .short
+    
+        cell.who_won.text = whoWon
+        cell.date_played.text = dateFormatter.string(from: whenWon)
+        
+        if (whoWon == Amritpal_GameModel.cross) {
+            cell.win_loss_image.image = UIImage(named: "Blue_Win")
+        } else {
+            cell.win_loss_image.image = UIImage(named: "Blue_Loss")
+        }
+        
+        cell.orderOfMoves = UserDefaults.standard.object(forKey: "OrderOfMoves_\(String(thisCellGameIndex))") as? [Int]
+        
         return cell
     }
 
@@ -82,14 +101,33 @@ class Amritpal_TableViewController: UITableViewController {
     }
     */
 
+    override func viewWillAppear(_ animated: Bool) {
+        tableView.reloadData()
+    }
+    
+    
     /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
     */
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        print("segue identifier \(segue.identifier!)")
+        
+        if (segue.identifier! == "newGame") {
+            return
+        }
+        
+        // PREPARE to send past game data
+        let thisCell = sender as! Amritpal_TableViewCell
+        
+        let destinationViewController = segue.destination as! Amritpal_GameViewController
+        
+        destinationViewController.isPastGame = true
+        destinationViewController.orderOfMoves = thisCell.orderOfMoves
+        
+    
+        
+    }
 
 }

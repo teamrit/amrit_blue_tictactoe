@@ -58,6 +58,7 @@
                                     <outlet property="date_played" destination="Wh6-4L-bH0" id="Gyy-x0-pz3"/>
                                     <outlet property="who_won" destination="hew-iJ-PjZ" id="RlW-WY-rhT"/>
                                     <outlet property="win_loss_image" destination="Fp8-iZ-7Cs" id="1eu-ie-Bv3"/>
+                                    <segue destination="Bin-ry-V6J" kind="show" identifier="oldGame" id="Tgi-LI-nce"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -70,7 +71,7 @@
                         <barButtonItem key="backBarButtonItem" title="Win Tally" id="bAq-pK-XUp"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Aiu-G2-HPh">
                             <connections>
-                                <segue destination="Bin-ry-V6J" kind="show" id="rqx-cV-zUE"/>
+                                <segue destination="Bin-ry-V6J" kind="show" identifier="newGame" id="rqx-cV-zUE"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -79,10 +80,10 @@
             </objects>
             <point key="canvasLocation" x="1424.6376811594205" y="142.63392857142856"/>
         </scene>
-        <!--View Controller-->
+        <!--Amritpal Game View Controller-->
         <scene sceneID="Dgt-W2-DnS">
             <objects>
-                <viewController id="Bin-ry-V6J" customClass="ViewController" customModule="amrit_blue_tictactoe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Bin-ry-V6J" customClass="Amritpal_GameViewController" customModule="amrit_blue_tictactoe" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="MKT-kO-v4f">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -374,6 +375,8 @@
                         <outletCollection property="collection" destination="WaT-Dr-0eQ" collectionClass="NSMutableArray" id="w7o-YW-1yv"/>
                         <outletCollection property="imageCollection" destination="4Dr-aY-8bD" collectionClass="NSMutableArray" id="9iv-vV-36G"/>
                         <outletCollection property="collection" destination="qzt-o5-NOU" collectionClass="NSMutableArray" id="V5U-5X-Mhd"/>
+                        <outletCollection property="imageCollection" destination="lvB-99-0Ux" collectionClass="NSMutableArray" id="Wfg-gQ-OEU"/>
+                        <outletCollection property="collection" destination="YSs-oB-RDc" collectionClass="NSMutableArray" id="bH2-mF-u57"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wDx-xq-G7O" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -484,4 +487,7 @@
     <resources>
         <image name="Blue_Win" width="64" height="64"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="Tgi-LI-nce"/>
+    </inferredMetricsTieBreakers>
 </document>

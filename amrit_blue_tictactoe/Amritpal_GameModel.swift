@@ -1,18 +1,19 @@
 //
-//  TicTacToe.swift
+//  Amritpal_GameModel.swift
 //  amrit_blue_tictactoe
 //
-//  Created by Amrit on 2019-06-08.
+//  Created by Amrit on 2019-07-12.
 //  Copyright © 2019 Singh Singh. All rights reserved.
 //
 
 import Foundation
 
-class TicTacToe {
+class Amritpal_GameModel {
     var values : [String]?
     var sprites : [String] = ["","","",
                               "","","",
                               "","",""]
+    var orderOfMoves = [Int]()
     var winner : String?
     var gameFinishedOn: Date?
     
@@ -22,8 +23,9 @@ class TicTacToe {
     static let transparent = "Transparent"
     
     func playTurn(index:Int, turn: String) {
-//       Turn is one of zero or cross
+        //       Turn is one of zero or cross
         sprites[index] = turn;
+        orderOfMoves.append(index)
     }
     
     func checkForWinner() -> String {
@@ -58,20 +60,20 @@ class TicTacToe {
             }
         }
         if (count == 9) {
-            return TicTacToe.draw
+            return Amritpal_GameModel.draw
         }
         return ""
     }
     
     func getPlayerName(symbol:String) -> String{
-        return "   \(symbol == TicTacToe.zero ? "Player 2" : "Player 1") won the match.  "
+        return "   \(symbol == Amritpal_GameModel.zero ? "Player 2" : "Player 1") won the match.  "
     }
     
     func setWinnerName(symbol: String) {
         self.winner = symbol
         self.gameFinishedOn = Date()
     }
-
+    
     func gameString() -> String {
         return "\(sprites.split(separator: "-")),\(self.winner!),\(self.gameFinishedOn!)"
     }
@@ -79,13 +81,13 @@ class TicTacToe {
     func saveGame() {
         var numberOfGamesPlayed = UserDefaults.standard.integer(forKey: "numberOfGamesPlayed")
         numberOfGamesPlayed += 1
+        UserDefaults.standard.set(numberOfGamesPlayed, forKey: "numberOfGamesPlayed")
         
         UserDefaults.standard.set(self.winner!, forKey: "Result_\(String(numberOfGamesPlayed))")
-        
-        let currentTime = Date().timeIntervalSince1970
-        
+        let currentTime = Date()
         UserDefaults.standard.set(currentTime, forKey: "Timestamp_\(String(numberOfGamesPlayed))")
+        UserDefaults.standard.set(orderOfMoves, forKey: "OrderOfMoves_\(String(numberOfGamesPlayed))")
+        
         
     }
-    
 }

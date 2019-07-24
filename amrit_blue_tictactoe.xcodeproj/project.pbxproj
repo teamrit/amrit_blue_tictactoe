@@ -16,7 +16,8 @@
 		28144A54229F16F000F147E5 /* amrit_blue_tictactoeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28144A53229F16F000F147E5 /* amrit_blue_tictactoeUITests.swift */; };
 		28144A62229F269200F147E5 /* Amritpal_TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28144A61229F269200F147E5 /* Amritpal_TableViewController.swift */; };
 		28144A64229F280200F147E5 /* Amritpal_TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28144A63229F280200F147E5 /* Amritpal_TableViewCell.swift */; };
-		F0E6062222ABE5100057D614 /* TicTacToe.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0E6062122ABE5100057D614 /* TicTacToe.swift */; };
+		F0E283D922D955AE00C7C4EA /* Amritpal_GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0E283D822D955AE00C7C4EA /* Amritpal_GameViewController.swift */; };
+		F0E283DB22D960EF00C7C4EA /* Amritpal_GameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0E283DA22D960EF00C7C4EA /* Amritpal_GameModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,7 +53,8 @@
 		28144A55229F16F000F147E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		28144A61229F269200F147E5 /* Amritpal_TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Amritpal_TableViewController.swift; sourceTree = "<group>"; };
 		28144A63229F280200F147E5 /* Amritpal_TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Amritpal_TableViewCell.swift; sourceTree = "<group>"; };
-		F0E6062122ABE5100057D614 /* TicTacToe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicTacToe.swift; sourceTree = "<group>"; };
+		F0E283D822D955AE00C7C4EA /* Amritpal_GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Amritpal_GameViewController.swift; sourceTree = "<group>"; };
+		F0E283DA22D960EF00C7C4EA /* Amritpal_GameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Amritpal_GameModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,7 +113,8 @@
 				28144A3F229F16F000F147E5 /* Info.plist */,
 				28144A61229F269200F147E5 /* Amritpal_TableViewController.swift */,
 				28144A63229F280200F147E5 /* Amritpal_TableViewCell.swift */,
-				F0E6062122ABE5100057D614 /* TicTacToe.swift */,
+				F0E283D822D955AE00C7C4EA /* Amritpal_GameViewController.swift */,
+				F0E283DA22D960EF00C7C4EA /* Amritpal_GameModel.swift */,
 			);
 			path = amrit_blue_tictactoe;
 			sourceTree = "<group>";
@@ -265,11 +268,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F0E283D922D955AE00C7C4EA /* Amritpal_GameViewController.swift in Sources */,
 				28144A62229F269200F147E5 /* Amritpal_TableViewController.swift in Sources */,
 				28144A36229F16F000F147E5 /* ViewController.swift in Sources */,
 				28144A34229F16F000F147E5 /* AppDelegate.swift in Sources */,
 				28144A64229F280200F147E5 /* Amritpal_TableViewCell.swift in Sources */,
-				F0E6062222ABE5100057D614 /* TicTacToe.swift in Sources */,
+				F0E283DB22D960EF00C7C4EA /* Amritpal_GameModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
